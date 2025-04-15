@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Blog - Icep Septian Fajar</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="../img/icon.png" type="image/png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles/styles.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+      <div class="container-xxxl">
+        <nav class="navbar navbar-expand-lg bg-body-secondary px-3 sticky-top">
+          <div class="container-fluid">
+            <a class="navbar-brand text-" href="#">
+              <h1>ISF</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="..">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../tentang">Tentang</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Kontak</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <main>
+            <div class="container-fluid py-5 text-center">
+                <h3>Kontak</h3>
+                <div class="row justify-content-md-center">
+                    <div class="col col-lg-3">
+                        <img src="assets/email-icon.png" alt="">
+                        <p>icpsptfjr@gmail.com</p>
+                    </div>
+                    <div class="col col-lg-3">
+                        <img src="assets/instagram-icon.png" alt="">
+                        <a class="link-underline text-dark link-underline-opacity-0" href="https://www.instagram.com/icepseptian/"><p>@icepseptian</p></a>
+                    </div>
+                <h4 class="py-3">Hubungi Saya</h4>
+                <div class="justify-content-center col col-lg-6">
+                    <form class="border rounded p-3 text-start" id="contactForm">
+                        <div class="mb-3">
+                            <label class="form-label" for="name">Nama Lengkap:</label>
+                            <input class="form-control" type="text" id="name" name="name" required>
+                            <span class="error" id="nameError"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email:</label>
+                            <input class="form-control" type="email" id="email" name="email" required>
+                            <span class="error" id="emailError"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="phone">Nomor Handphone:</label>
+                            <input class="form-control" type="text" id="phone" name="phone" required>
+                            <span class="error" id="phoneError"></span>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="message">Pesan:</label>
+                            <textarea class="form-control" id="message" name="message" required></textarea>
+                            <span class="error" id="messageError"></span>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Kirim</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer class="bg-light text-center text-lg-start px-3">
+          <div class="text-center p-3">
+            <p>© 2025 Icep Septian Fajar</p>
+          </div>
+        </footer>
+      </div>
+        
+      <script>
+        $(document).ready(function() {
+
+            $('#contactForm').on('submit', function(event) {
+
+                event.preventDefault(); // Mencegah pengiriman formulir
+
+                // Menghapus pesan kesalahan sebelumnya
+                $('.error').text('');
+
+                // Validasi
+                let isValid = true;
+
+                // Validasi Nama Lengkap
+                const name = $('#name').val().trim();
+
+                if (name === '' || name.split(' ').length > 5) {
+                    $('#nameError').text('Nama lengkap wajib diisi dan maksimal 5 kata.');
+                    isValid = false;
+                }
+
+                // Validasi Email
+                const email = $('#email').val().trim();
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (email === '' || !emailPattern.test(email)) {
+                    $('#emailError').text('Email wajib diisi dan harus dalam format yang valid.');
+                    isValid = false;
+                }
+
+                // Validasi Nomor Handphone
+                const phone = $('#phone').val().trim();
+                const phonePattern = /^[0-9]{10,15}$/; // Contoh: 10-15 digit
+
+                if (phone === '' || !phonePattern.test(phone)) {
+                    $('#phoneError').text('Nomor handphone wajib diisi dan harus terdiri dari 10-15 digit.');
+                    isValid = false;
+                }
+
+                // Validasi Pesan
+                const message = $('#message').val().trim();
+
+                if (message === '' || message.split(' ').length > 50) {
+                    $('#messageError').text('Pesan wajib diisi dan maksimal 50 kata.');
+                    isValid = false;
+                }
+
+                // Jika semua validasi berhasil
+                if (isValid) {
+                    alert('Pesan berhasil dikirim!');
+                    $('#contactForm')[0].reset();
+                }
+
+            });
+
+        });
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    </body>
+</html>
