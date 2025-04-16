@@ -2,3 +2,16 @@
     max-width: 1400px;
     margin: 0 auto;
 }
+.bg-custom {
+    background-color: #121212;
+}
+.card-bg {
+    background-color: #32383e;
+}
+.card-date {
+    left: 8px;
+}
+a:hover {
+    opacity: 0.9;
+    transition: opacity 0.5s ease;
+}
